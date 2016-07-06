@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+ 
+<!--  消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+ 	<dubbo:application name="quartz-service"  />
+ 	
+    <dubbo:registry address="${dubbo.registry.address}" />
+    <dubbo:consumer check="false"></dubbo:consumer>
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
+	<dubbo:reference id="salesOrderBusiness" interface="com.zjlp.face.web.server.trade.order.bussiness.SalesOrderBusiness" version="${dubbo.salesOrderBusiness.version}" timeout="10000"/>
+	<dubbo:reference id="withdrawBusiness" interface="com.zjlp.face.web.server.trade.account.business.WithdrawBusiness" version="${dubbo.withdrawBusiness.version}" timeout="10000"/>
+	<dubbo:reference id="withdrawService" interface="com.zjlp.face.account.service.WithdrawService" version="${dubbo.withdrawService.version}" timeout="10000"/>
+	<dubbo:reference id="umsService" interface="com.zjlp.face.ums.service.UmsService" version="${dubbo.umsService.version}" timeout="10000"/>
+	<dubbo:reference id="redenvelopeBusiness" interface="com.zjlp.face.web.server.operation.redenvelope.business.RedenvelopeBusiness" version="${dubbo.redenvelopeBusiness.version}" timeout="100000"/>
+
+    <bean id="quartzService" class="com.zjlp.face.service.impl.QuartzServiceImpl" />
+	<dubbo:service interface="com.zjlp.face.service.QuartzService" ref="quartzService" version="${dubbo.quartzService.version}" timeout="200000" />
+
+</beans>

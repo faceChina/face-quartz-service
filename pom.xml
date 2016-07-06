@@ -1,0 +1,305 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.zjlp.face.quartz</groupId>
+  <artifactId>face-quartz-service</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>dev Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+   <profiles>
+	<profile>
+		<id>dev</id>
+		<properties>
+			<env>dev</env>
+		</properties>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+	</profile>
+	<profile>
+		<id>test</id>
+		<properties>
+			<env>test</env>
+		</properties>
+	</profile>
+	<profile>
+		<id>demo</id>
+		<properties>
+			<env>demo</env>
+		</properties>
+	</profile>
+  </profiles>
+  <dependencies>
+  	
+	<dependency>
+		<groupId>com.github.sgroschupf</groupId>
+		<artifactId>zkclient</artifactId>
+		<version>0.1</version>
+	</dependency>
+  
+  	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.8.2</version>
+		<scope>test</scope>
+	</dependency>
+	
+  	<!-- metaq -->
+	<dependency>
+	    <groupId>com.taobao.metamorphosis</groupId>
+	    <artifactId>metamorphosis-client</artifactId>
+	    <version>1.4.6.2</version>
+	</dependency>
+	
+	<!-- spring -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+	
+	<!-- aop -->
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>1.7.2</version>
+	</dependency>
+	<!-- slf4j -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>1.7.6</version>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.7.6</version>
+	</dependency>
+	
+	<!-- apache commons lang jar -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.0.1</version>
+	</dependency>
+	
+	<!-- quartz -->
+	<dependency>
+		<groupId>org.quartz-scheduler</groupId>
+		<artifactId>quartz</artifactId>
+		<version>2.1.7</version>
+	</dependency>
+	
+	<!-- face-web -->
+	<dependency>
+	  <groupId>com.zjlp.face</groupId>
+	  <artifactId>face-web</artifactId>
+	  <version>0.0.36</version>
+	</dependency>
+	
+	<!-- face account service -->
+	<dependency>
+	  <groupId>com.zjlp.face</groupId>
+	  <artifactId>face-account-service</artifactId>
+	  <version>0.1.4</version>
+	</dependency>
+	
+	<!-- util -->
+	<dependency>
+	  <groupId>com.zjlp.face</groupId>
+	  <artifactId>face-util</artifactId>
+	  <version>0.0.5</version>
+	</dependency>
+	<dependency>
+		<groupId>com.zjlp.face</groupId>
+		<artifactId>face-ums-service</artifactId>
+		<version>0.0.2</version>
+	</dependency>
+	<!-- log4j日志 -->
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.9</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jvnet.hudson.dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1-hudson-3</version>
+	</dependency>
+	
+	<!-- alibaba dubbo jars -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>dubbo</artifactId>
+		<version>2.5.3</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<dependency>
+		<groupId>com.github.sgroschupf</groupId>
+		<artifactId>zkclient</artifactId>
+		<version>0.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.22</version>
+		<type>jar</type>
+	</dependency>
+	
+	<!-- json封装 -->
+	<dependency>
+		<groupId>net.sf.json-lib</groupId>
+		<artifactId>json-lib</artifactId>
+		<version>2.4</version>
+		<classifier>jdk15</classifier>
+	</dependency>
+  </dependencies>
+  
+    <repositories>
+		<repository>
+			<id>nexus</id>
+			<name>jznexus</name>
+			<url>http://192.168.1.123:8081/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<build>
+		<finalName>face-quartz-service</finalName>
+		<filters>
+			<filter>src/main/filters/filter-${env}.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-testCompile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</execution>
+					<execution>
+						<id>default-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+							<encoding>UTF-8</encoding>
+							<showWarnings>true</showWarnings>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>rmic-maven-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>rmic</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1.1</version>
+					<configuration>
+						<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
